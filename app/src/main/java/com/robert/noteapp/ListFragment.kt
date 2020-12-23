@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,6 +50,11 @@ class ListFragment : Fragment() {
             val noteAdapter = NoteListAdapter(notes)
             layoutManager = LinearLayoutManager(activity)
             adapter = noteAdapter
+        }
+
+        view.findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
+            val action = ListFragmentDirections.actionListFragmentToAddEditFragment()
+            view.findNavController().navigate(action)
         }
     }
 
